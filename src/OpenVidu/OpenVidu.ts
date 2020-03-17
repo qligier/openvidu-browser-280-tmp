@@ -289,28 +289,7 @@ export class OpenVidu {
    * @returns 1 if the browser supports OpenVidu, 0 otherwise
    */
   checkSystemRequirements(): number {
-    const browser = platform.name;
-    const family = platform.os!!.family;
-    const userAgent = !!platform.ua ? platform.ua : navigator.userAgent;
-
-    // Reject iPhones and iPads if not Safari ('Safari' also covers Ionic for iOS)
-    if (family === 'iOS' && (browser !== 'Safari' || userAgent.indexOf('CriOS') !== -1 || userAgent.indexOf('FxiOS') !== -1)) {
-      return 0;
-    }
-
-    // Accept: Chrome (desktop and Android), Firefox (desktop and Android), Opera (desktop and Android),
-    // Safari (OSX and iOS), Ionic (Android and iOS)
-    if (
-      (browser !== 'Safari') &&
-      (browser !== 'Chrome') && (browser !== 'Chrome Mobile') &&
-      (browser !== 'Firefox') && (browser !== 'Firefox Mobile') &&
-      (browser !== 'Opera') && (browser !== 'Opera Mobile') &&
-      (browser !== 'Android Browser')
-    ) {
-      return 0;
-    } else {
-      return 1;
-    }
+    return 1;
   }
 
 
@@ -319,7 +298,6 @@ export class OpenVidu {
    * @returns 1 if the browser supports screen-sharing, 0 otherwise
    */
   checkScreenSharingCapabilities(): number {
-    const browser = platform.name;
     const family = platform.os!!.family;
 
     // Reject mobile devices
@@ -327,11 +305,7 @@ export class OpenVidu {
       return 0;
     }
 
-    if ((browser !== 'Chrome') && (browser !== 'Firefox') && (browser !== 'Opera')) {
-      return 0;
-    } else {
-      return 1;
-    }
+    return 1;
   }
 
 
